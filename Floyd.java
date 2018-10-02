@@ -6,53 +6,71 @@ public class Floyd {
    
     public static void main(String[] args) {
 
-    //
-        int infinity = 9999, vertices = 4;
-        //
-        int[][] DistanceMatrix = new int[vertices][vertices];
-        int[][] WeightMatrix = new int[vertices][vertices];
+       
+        int size = 4;
+        final int INF = 10000;
+        
 
-        InitializeDistanceMatrix(DistanceMatrix);
-        //PrintMatrix(DistanceMatrix);
+        int[][] DistanceMatrix = {
+            
+            {0,INF,3,INF},
+            {2,0,INF,INF},
+            {INF,7,0,1},
+            {6,INF,INF,0}
+            
+        };
+       
+        System.out.println("Before:");
+                PrintMatrix(DistanceMatrix,INF);
 
-
-    }
-
-    public static void InitializeDistanceMatrix(int[][] x) {
-
-        x[0][0] = 0;
-        x[0][1] = 10;
-        x[0][2] = 3;
-        x[0][3] = 4;
-        x[1][0] = 2;
-        x[1][1] = 0;
-        x[1][2] = 5;
-        x[1][3] = 6;
-        x[2][0] = 7;
-        x[2][1] = 7;
-        x[2][2] = 0;
-        x[2][3] = 1;
-        x[3][0] = 6;
-        x[3][1] = 16;
-        x[3][2] = 9;
-        x[3][3] = 0;
-
-    }
+        Floyd(DistanceMatrix, size);
+        System.out.println("After: ");
+        PrintMatrix(DistanceMatrix,INF);
+        // PrintMatrix(DistanceMatrix);
+        
 
 
 
-    public static void PrintMatrix(int[][] x) {
-        for (int i = 0; i < x.length; i++) {
-            for (int j = 0; j < x[i].length; j++) {
-                System.out.print(x[i][j] + "\t");
+    } // main
 
+
+    public static void PrintMatrix(int[][] matrix, int INF) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+
+                if (matrix[i][j] == INF) {
+                    System.out.print("∞\t");
+                } else {
+                    System.out.print(matrix[i][j] + "\t");
+                }
             }
             System.out.println("");
 
         }
-                System.out.println("\n\n");
+        System.out.println("\n\n");
+
 
     }
 
-    
+    public static void Floyd(int[][] matrix, int V) {
+
+
+        for (int k = 0; k < V; k++) { 
+            
+            for (int i = 0; i < V; i++) {
+              
+                for (int j = 0; j < V; j++) {  
+                    // If vertex k is on the shortest path from 
+                    // i to j, then update the value of dist[i][j] 
+                    if (matrix[i][j] > matrix[i][k] + matrix[k][j] ) { 
+                        matrix[i][j] = matrix[i][k] + matrix[k][j];
+                    }
+                }
+            }
+        }
+
+
+    }
 }
+
+
