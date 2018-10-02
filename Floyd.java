@@ -21,27 +21,45 @@ public class Floyd {
         // Matrix before running Floyd's algorithm:
         System.out.println("Weight Matrix:\n");
         PrintMatrix(matrix, INF);
-       
+
         System.out.println("\nNow computing the distance matrix...\n\n\n");
         // Call the Floyd method, passing the current matrix and size as arguments
         Floyd(matrix, size);
-        
+
         // Matrix after running Floyd's algorithm:
         System.out.println("Distance Matrix: \n");
         PrintMatrix(matrix, INF);
-        
+
     } // main
 
     public static void PrintMatrix(int[][] matrix, int INF) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
+        /*
+      - Description:
+        This method prints a matrix onto the console
+        
+      - Parameters:
+        matrix - some matrix
+        INf - a variable representing an integer number 
+        that the programmers decided to set as a limit  
 
+      - Output:
+         This method returns no output. It simply prints text onto the console
+         */
+        // iterate over rows
+        for (int i = 0; i < matrix.length; i++) {
+            // iterate over columns
+            for (int j = 0; j < matrix[i].length; j++) {
+                // check if the matrix entry matches the infinity limit
                 if (matrix[i][j] == INF) {
+                    // if it does, print the infinity symbol
                     System.out.print("∞\t");
-                } else {
+                } // otherwise print the entry
+                else {
                     System.out.print(matrix[i][j] + "\t");
                 }
+
             }
+            // print a line to seperate rows
             System.out.println("");
 
         }
