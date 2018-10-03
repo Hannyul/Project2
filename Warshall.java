@@ -1,3 +1,11 @@
+/*
+NAMES 
+NAMES 
+NAMES 
+NAMES 
+NAMES !!!!!!!!!!!!!!!!!
+*/
+
 package warshall;
 
 public class Warshall {
@@ -9,10 +17,10 @@ public class Warshall {
 
         // Declare and initialize adjacency matrix
         int[][] matrix = {
-            {0, 1, 0, 0},
-            {0, 0, 0, 1},
-            {0, 0, 0, 0},
-            {1, 0, 1, 0}
+            {0, 0, 1, 0},
+            {1, 0, 0, 0},
+            {0, 1, 0, 1},
+            {1, 0, 0, 0}
         };
 
         // Matrix before running Warshall's algorithm:
